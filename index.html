@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<base href="https://twinlunarstarz-dev.github.io/roadsidecalculators/">
+<title>Roadside Cost Calculators — Towing, Tires, Mobile Mechanic & More | TwinLunarStarZ</title>
+<meta name="description" content="Free roadside calculators: towing cost, tire replacement, mobile mechanic estimates, lockout pricing, EV charging and post-accident rental costs.">
+<link rel="canonical" href="https://twinlunarstarz-dev.github.io/roadsidecalculators/">
+<style>
+:root{--bg:#f6f8fa;--card:#fff;--ink:#1c2530;--muted:#5b6b7c;--line:#dde4ec;
+--brand:#0f6ab4;--brand-dk:#0a4d85;--accent:#e8590c;--ok:#2b8a3e;--radius:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px}
+a{color:var(--brand)}
+.wrap{max-width:880px;margin:0 auto;padding:20px 16px 48px}
+header.site{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+.logo{font-weight:800;font-size:17px;color:var(--ink);text-decoration:none;display:flex;gap:8px;align-items:center}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+nav.main a{color:var(--muted);text-decoration:none;font-size:14px;margin-left:16px;font-weight:600}
+h1{font-size:26px;line-height:1.25;margin:18px 0 8px}
+.sub{color:var(--muted);margin-bottom:20px;max-width:64ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
+select,input[type=number],input[type=text]{width:100%;max-width:340px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:#fff;color:var(--ink)}
+.row{display:flex;gap:16px;flex-wrap:wrap}
+.row>div{flex:1;min-width:140px}
+button.calc{margin-top:18px;background:var(--brand);color:#fff;border:none;font-size:15px;font-weight:700;padding:12px 26px;border-radius:9px;cursor:pointer}
+button.calc:hover{background:var(--brand-dk)}
+.result{display:none;margin-top:18px;background:#f0f7ff;border:1px solid #cfe4f5;border-radius:var(--radius);padding:18px}
+.result.show{display:block}
+.range-line{font-size:22px;font-weight:800;color:var(--brand-dk)}
+table.ite{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+table.ite td{padding:6px 8px;border-bottom:1px solid var(--line)}
+table.ite td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+.cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:9px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:8px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-decoration:none;color:var(--ink)}
+.tile:hover{border-color:var(--brand)}
+.tile h3{font-size:16px;margin-bottom:6px}
+.tile p{font-size:14px;color:var(--muted)}
+footer.site{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.badge{display:inline-block;background:#fff0e6;color:var(--accent);border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.chip{padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:600;color:var(--muted)}
+.listing{border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:12px;background:#fff}
+.listing h4{font-size:15px}
+.listing .meta{color:var(--muted);font-size:13px;margin-top:4px}
+.empty{color:var(--muted);text-align:center;padding:30px 10px;border:1px dashed var(--line);border-radius:var(--radius)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/index.html"><span class="dot"></span>Roadside Calculators</a>
+  <nav class="main">
+    <a href="/calculators/">Calculators</a>
+    <a href="/guides/">Guides</a>
+    <a href="/directory/">Directory</a>
+  </nav>
+</div></header>
+<div class="wrap">
+<h1>Know the fair price before you call anyone</h1>
+<p class="sub">Six free roadside cost calculators with itemized breakdowns — built from national service medians so you can spot a padded quote in 30 seconds.</p>
+<div class="card"><div class="grid"><a class="tile" href="/calculators/tow/"><h3>Towing Cost Calculator</h3><p>Itemized tow price by distance, vehicle type & after-hours.</p></a><a class="tile" href="/calculators/tire/"><h3>Tire Replacement Cost</h3><p>Tires + install across 3 tiers. Plug patch vs replace guidance.</p></a><a class="tile" href="/calculators/mech/"><h3>Mobile Mechanic Estimator</h3><p>Parts + labor ranges for 7 common mobile services.</p></a><a class="tile" href="/calculators/lock/"><h3>Lockout Service Pricing</h3><p>What an unlock should cost by metro and time of day.</p></a><a class="tile" href="/calculators/ev/"><h3>EV Charging Cost</h3><p>Home vs DC fast per full charge and per 100 miles.</p></a><a class="tile" href="/calculators/rent/"><h3>Rental Car After Accident</h3><p>Days x class with your coverage type factored in.</p></a></div></div><div class="card"><h3 style="margin-bottom:8px">Stop overpaying at the roadside</h3><p>Our free calculators show you what a fair price is before you call. For the full negotiation system, grab our field guides:</p><p style="margin-top:14px"><a class="cta" href="https://buy.stripe.com/bJe5kCfVw4NJ4YN2q18N200" target="_blank" rel="noopener">Get the Tow Bill Negotiator's Playbook ($9)</a></p></div>
+
+<footer class="site">
+  <div class="wrap" style="padding-top:0;padding-bottom:10px">
+    <p><strong>Roadside Calculators by TwinLunarStarZ</strong> &mdash; free roadside cost tools and guides.</p>
+    <p>All figures are estimates for planning only. Actual prices vary by provider, vehicle, and location. Always confirm a written quote before dispatching any service.</p>
+    <p>Contact / corrections: <a href="mailto:TwinLunarStarZ@gmail.com">TwinLunarStarZ@gmail.com</a></p>
+    <p><a href="/legal/privacy.html">Privacy</a> &middot; <a href="/legal/terms.html">Terms</a> &middot; <a href="/legal/disclaimer.html">Estimate disclaimer</a></p>
+  </div>
+</footer>
+</div>
+<script>
+function fmt$(n){return '$'+Math.round(n).toLocaleString('en-US');}
+function show(id,el){document.getElementById(el).classList.add('show');}
+function setVal(id,v){document.getElementById(id).textContent=v;}
+function range(lo,hi){return {lo:lo,hi:hi,mid:(lo+hi)/2};}
+</script>
+</body>
+</html>

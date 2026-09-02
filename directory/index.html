@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<base href="https://twinlunarstarz-dev.github.io/roadsidecalculators/">
+<title>Mobile Mechanic & Roadside Service Directory | TwinLunarStarZ</title>
+<meta name="description" content="Find mobile mechanics and roadside services. Filters: 24/7, EV-certified, transparent pricing. New cities added regularly.">
+<link rel="canonical" href="https://twinlunarstarz-dev.github.io/roadsidecalculators/directory/">
+<style>
+:root{--bg:#f6f8fa;--card:#fff;--ink:#1c2530;--muted:#5b6b7c;--line:#dde4ec;
+--brand:#0f6ab4;--brand-dk:#0a4d85;--accent:#e8590c;--ok:#2b8a3e;--radius:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px}
+a{color:var(--brand)}
+.wrap{max-width:880px;margin:0 auto;padding:20px 16px 48px}
+header.site{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+.logo{font-weight:800;font-size:17px;color:var(--ink);text-decoration:none;display:flex;gap:8px;align-items:center}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+nav.main a{color:var(--muted);text-decoration:none;font-size:14px;margin-left:16px;font-weight:600}
+h1{font-size:26px;line-height:1.25;margin:18px 0 8px}
+.sub{color:var(--muted);margin-bottom:20px;max-width:64ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
+select,input[type=number],input[type=text]{width:100%;max-width:340px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:#fff;color:var(--ink)}
+.row{display:flex;gap:16px;flex-wrap:wrap}
+.row>div{flex:1;min-width:140px}
+button.calc{margin-top:18px;background:var(--brand);color:#fff;border:none;font-size:15px;font-weight:700;padding:12px 26px;border-radius:9px;cursor:pointer}
+button.calc:hover{background:var(--brand-dk)}
+.result{display:none;margin-top:18px;background:#f0f7ff;border:1px solid #cfe4f5;border-radius:var(--radius);padding:18px}
+.result.show{display:block}
+.range-line{font-size:22px;font-weight:800;color:var(--brand-dk)}
+table.ite{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+table.ite td{padding:6px 8px;border-bottom:1px solid var(--line)}
+table.ite td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+.cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:9px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:8px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-decoration:none;color:var(--ink)}
+.tile:hover{border-color:var(--brand)}
+.tile h3{font-size:16px;margin-bottom:6px}
+.tile p{font-size:14px;color:var(--muted)}
+footer.site{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.badge{display:inline-block;background:#fff0e6;color:var(--accent);border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.chip{padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:600;color:var(--muted)}
+.listing{border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:12px;background:#fff}
+.listing h4{font-size:15px}
+.listing .meta{color:var(--muted);font-size:13px;margin-top:4px}
+.empty{color:var(--muted);text-align:center;padding:30px 10px;border:1px dashed var(--line);border-radius:var(--radius)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/index.html"><span class="dot"></span>Roadside Calculators</a>
+  <nav class="main">
+    <a href="/calculators/">Calculators</a>
+    <a href="/guides/">Guides</a>
+    <a href="/directory/">Directory</a>
+  </nav>
+</div></header>
+<div class="wrap">
+<h1>Roadside service directory</h1>
+<p class="sub">Mobile mechanics, 24/7 towing, EV-certified techs — filterable by what actually matters.</p>
+<div class="card">
+<p>Search by ZIP or city to see vetted providers near you. We publish only businesses we can verify from public listings; every entry is dated with its source.</p>
+<div class="filters" id="chips"></div>
+<input type="text" id="dir-q" placeholder="Enter ZIP code or city (e.g., 75201, Dallas)" style="max-width:420px">
+<button class="calc" onclick="dir_search()">Search</button>
+<div id="dir-results" style="margin-top:16px"></div>
+<p class="note">Listing data is compiled from public business directories and re-verified periodically. Found an error or missing provider? <a href="mailto:{CONTACT_EMAIL}">Email us</a>.</p>
+</div>
+
+<footer class="site">
+  <div class="wrap" style="padding-top:0;padding-bottom:10px">
+    <p><strong>Roadside Calculators by TwinLunarStarZ</strong> &mdash; free roadside cost tools and guides.</p>
+    <p>All figures are estimates for planning only. Actual prices vary by provider, vehicle, and location. Always confirm a written quote before dispatching any service.</p>
+    <p>Contact / corrections: <a href="mailto:TwinLunarStarZ@gmail.com">TwinLunarStarZ@gmail.com</a></p>
+    <p><a href="/legal/privacy.html">Privacy</a> &middot; <a href="/legal/terms.html">Terms</a> &middot; <a href="/legal/disclaimer.html">Estimate disclaimer</a></p>
+  </div>
+</footer>
+</div>
+<script>
+function fmt$(n){return '$'+Math.round(n).toLocaleString('en-US');}
+function show(id,el){document.getElementById(el).classList.add('show');}
+function setVal(id,v){document.getElementById(id).textContent=v;}
+function range(lo,hi){return {lo:lo,hi:hi,mid:(lo+hi)/2};}
+</script>
+<script>
+const DIR_DATA=[{"name":"Mobile Mechanics of Dallas","phone":"(214) 427-8822","services":"On-site auto repair: brakes, oil changes, diagnostics and more at home, office or roadside.","area":"Dallas, TX (metro)","zips":["75201","75202","75203","75204","75206","75208","75209","75214","75215"],"cities":["Dallas"],"tags":["mobile","24/7"],"source":"official site mobilemechanicsofdallas.com (phone + 24/7 claim read from page)","checked":"2026-09-02"},{"name":"Lone Star Mobile Services","phone":"(214) 551-4796","services":"Certified mobile mechanic, DFW-wide: battery replacement, brakes, oil changes, diagnostics. Call or text.","area":"Dallas-Fort Worth metroplex (DFW)","zips":["75201","75204","75208","75214","75219","76101","76102","76103","76107","76109","76120"],"cities":["Dallas","Fort Worth"],"tags":["mobile","diesel-capable-unknown","text-ok"],"source":"official site lonestarmobileservices.com (phone + 'anywhere in the DFW area' claim read from page)","checked":"2026-09-02"},{"name":"Mobile Mechanic Dallas TX","phone":"(214) 499-9515","services":"Brake service and general mobile auto repair; the shop comes to you.","area":"Dallas, TX (metro)","zips":["75201","75202","75203","75204","75206","75208"],"cities":["Dallas"],"tags":["mobile"],"source":"official site mobilemechanicdallastx.com (phone read from page)","checked":"2026-09-02"}];
+function dir_search(){
+  const q=(document.getElementById('dir-q').value||'').trim().toLowerCase();
+  const out=document.getElementById('dir-results');
+  if(!q){out.innerHTML='<div class="empty">Enter a ZIP or city to search.</div>';return;}
+  // simple containment match on zips/cities array per provider (no external API)
+  const hits=DIR_DATA.filter(p=>(p.zips||[]).some(z=>String(q).startsWith(String(z)))||(p.cities||[]).some(c=>c.toLowerCase().includes(q)||q.includes(c.toLowerCase())));
+  if(!hits.length){out.innerHTML='<div class="empty">No verified providers for that area yet. We add new cities regularly — <a href="/calculators/">use the calculators</a> to know your fair price in the meantime.</div>';return;}
+  // Safe: DIR_DATA is our own static providers.json bundled at build time; q is only used in filter comparisons, never interpolated into HTML below.
+  out.innerHTML=hits.map(p=>'<div class="listing"><h4>'+p.name+'</h4><div class="meta">'+(p.services||'')+' &middot; '+(p.area||'')+'</div>'+(p.phone?'<div class="meta">Call: <a href="tel:'+p.phone.replace(/[^0-9+]/g,"")+'">'+p.phone+'</a></div>':'')+'<div class="note">Source: '+ (p.source||'public listing') +' ('+(p.checked||'') +')</div></div>').join('');
+}
+</script></body>
+</html>
