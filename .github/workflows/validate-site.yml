@@ -1,0 +1,21 @@
+name: Validate static site
+
+on:
+  pull_request:
+  push:
+    branches:
+      - fix/site-functional-accuracy
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate internal links and required metadata
+        run: python scripts/validate_site.py
